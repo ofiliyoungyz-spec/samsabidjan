@@ -1,0 +1,13 @@
+{
+  "name": "SAM's Abidjan",
+  "tagline": "Where the food is good, the coffee hot & the people happy",
+  "phone": "05 44 02 0000",
+  "address": "Rue Pierre et Marie Curie, Zone 4C Marcory, Abidjan, Côte d'Ivoire",
+  "instagram": "@samsabidjan",
+  "hours": {
+    "mon_thu": "9:00 – 22:30",
+    "fri": "9:00 – 23:00",
+    "sat": "9:00 – 23:00",
+    "sun": "9:00 – 22:30"
+  }
+}

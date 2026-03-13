@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SAM's Abidjan – Café · Kitchen · People | Let's Meat Here</title>
+  <meta name="description" content="SAM's Abidjan — Where the food is good, the coffee hot & the people happy. Gourmet burgers, poke bowls, tacos, specialty coffee. Zone 4C Marcory, Rue Pierre et Marie Curie. Open daily 9am–10:30pm. @samsabidjan"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    :root{
+      --w:#fff;
+      --off:#fafaf8;
+      --light:#f5f1eb;
+      --sand:#ede8df;
+      --gold:#d4a843;
+      --orange:#e8621a;
+      --red:#c0390b;
+      --dark:#1a1208;
+      --mid:#3d2e1a;
+      --muted:#7a6a58;
+      --green:#2d6a4f;
+      --blue:#2563eb;
+      --fh:'Playfair Display',Georgia,serif;
+      --fb:'Inter',sans-serif;
+      --fi:'Cormorant Garamond',Georgia,serif;
+    }
+    body{background:var(--w);color:var(--dark);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+    /* LANG */
+    .lang-toggle{position:fixed;top:1rem;right:1.4rem;z-index:400;display:flex;gap:.25rem}
+    .lbtn{background:rgba(255,255,255,0.95);border:1.5px solid #ddd;color:var(--mid);font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .65rem;cursor:pointer;border-radius:3px;transition:all .2s;backdrop-filter:blur(10px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .lbtn.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.07);box-shadow:0 1px 20px rgba(0,0,0,0.05)}
+    .nav-logo{font-family:var(--fh);font-size:1.7rem;font-weight:900;color:var(--orange);text-decoration:none}
+    .nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--mid);text-decoration:none;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover{color:var(--orange)}
+    .nav-menu-btn{background:var(--light);color:var(--dark);border:none;padding:.48rem 1.1rem;border-radius:4px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+    .nav-menu-btn:hover,.nav-menu-btn.active{background:var(--dark);color:#fff}
+    .nav-cta{background:var(--orange);color:#fff !important;padding:.5rem 1.3rem;border-radius:4px}
+    .nav-cta:hover{background:var(--red) !important}
+
+    /* BUTTONS */
+    .btn{display:inline-block;text-decoration:none;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2.2rem;border-radius:5px;transition:all .25s;cursor:pointer;border:none;font-family:var(--fb)}
+    .btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:var(--red);transform:translateY(-2px)}
+    .btn-outline{background:transparent;color:var(--orange);border:2px solid var(--orange)}.btn-outline:hover{background:var(--orange);color:#fff}
+    .btn-dark{background:var(--dark);color:#fff}.btn-dark:hover{background:var(--mid)}
+    .btn-white{background:#fff;color:var(--dark)}.btn-white:hover{background:var(--light)}
+    .btn-outline-white{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)}.btn-outline-white:hover{background:rgba(255,255,255,.15)}
+    .btn-sm{padding:.6rem 1.4rem;font-size:.68rem}
+
+    /* PAGES */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* ═══════════════════════════════════════
+       HOME PAGE
+    ═══════════════════════════════════════ */
+
+    /* HERO */
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+    .hero-left{background:linear-gradient(160deg,#fff8f2,#fef3e8 60%,#fde8d4);display:flex;flex-direction:column;justify-content:center;padding:9rem 4rem 5rem 5rem;position:relative;overflow:hidden}
+    .hero-left::before{content:'SAM\'S';position:absolute;font-family:var(--fh);font-size:15rem;font-weight:900;color:rgba(232,98,26,.05);bottom:-2rem;left:-1rem;line-height:1;pointer-events:none;white-space:nowrap}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid #f0e4d0;border-radius:30px;padding:.4rem 1rem;margin-bottom:2rem;width:fit-content;box-shadow:0 2px 12px rgba(0,0,0,0.07);animation:fadeUp .7s .1s both}
+    .hb-dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+    .hb-txt{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+    .hero-tag{font-family:var(--fi);font-style:italic;color:var(--orange);font-size:1.1rem;margin-bottom:.7rem;animation:fadeUp .7s .2s both}
+    .hero-title{font-family:var(--fh);font-size:clamp(3rem,5vw,5.2rem);font-weight:900;color:var(--dark);line-height:1.02;margin-bottom:.9rem;animation:fadeUp .7s .3s both}
+    .hero-title em{font-style:italic;color:var(--orange)}
+    .hero-motto{display:inline-block;background:var(--dark);color:#fff;font-family:var(--fh);font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;border-radius:3px;margin-bottom:1.2rem;animation:fadeUp .7s .37s both}
+    .hero-desc{font-size:.9rem;color:var(--muted);max-width:380px;line-height:1.8;margin-bottom:2rem;animation:fadeUp .7s .44s both}
+    .hero-acts{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s .51s both}
+    .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid #ead9c4;animation:fadeUp .7s .58s both;flex-wrap:wrap}
+    .hs-num{font-family:var(--fh);font-size:1.9rem;font-weight:900;color:var(--dark);line-height:1}
+    .hs-lbl{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+    .hero-right{position:relative;overflow:hidden}
+    .hero-right-img{width:100%;height:100%;background:url('/images/burger.png') center/cover}
+    .hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,18,8,.05),rgba(26,18,8,.55))}
+    .hero-caption{position:absolute;bottom:2rem;left:2rem;right:2rem;color:#fff}
+    .hero-caption h3{font-family:var(--fh);font-size:1.5rem;font-weight:700;margin-bottom:.3rem}
+    .hero-caption p{font-size:.8rem;opacity:.8}
+
+    /* ABOUT */
+    #about{padding:7rem 4rem;background:var(--w)}
+    .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+    .about-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 160px;gap:.8rem}
+    .aimg{border-radius:10px;background-size:cover;background-position:center}
+    .aimg.full{grid-column:span 2}
+    .ai1{background-image:url('/images/interior.png')}
+    .ai2{background-image:url('/images/mixed-grill.png')}
+    .ai3{background-image:url('/images/nachos.png')}
+    .about-float{position:absolute;bottom:-1rem;right:-1rem;background:var(--orange);color:#fff;padding:1.2rem 1.5rem;border-radius:10px;text-align:center;box-shadow:0 8px 30px rgba(232,98,26,.3)}
+    .about-imgs-wrap{position:relative}
+    .af-big{font-family:var(--fh);font-size:2.2rem;font-weight:900;line-height:1}
+    .af-sm{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.9;margin-top:.2rem}
+    .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem}
+    .sec-title{font-family:var(--fh);font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem;color:var(--dark)}
+    .about-text p{color:var(--muted);font-size:.92rem;margin-bottom:1rem;line-height:1.8}
+    .about-quote{background:var(--light);border-left:4px solid var(--orange);padding:1.1rem 1.4rem;border-radius:0 8px 8px 0;margin:1.5rem 0;font-family:var(--fi);font-style:italic;font-size:1.1rem;color:var(--dark)}
+    .pillars{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:1.8rem}
+    .pillar{background:var(--light);border-radius:8px;padding:1rem 1.1rem}
+    .pillar-icon{font-size:1.3rem;margin-bottom:.35rem}
+    .pillar-title{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dark);margin-bottom:.2rem}
+    .pillar p{font-size:.76rem;color:var(--muted);line-height:1.5}
+
+    /* MENU PREVIEW */
+    #menu-preview{padding:7rem 4rem;background:var(--off)}
+    .mp-inner{max-width:1100px;margin:0 auto}
+    .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+    .sec-head-sub{color:var(--muted);font-size:.9rem;max-width:420px;margin-top:.5rem}
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+    .mcard{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 18px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s}
+    .mcard:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+    .mcard-img{width:100%;aspect-ratio:4/3;background-size:cover;background-position:center;position:relative}
+    .mcard-badge{position:absolute;top:.75rem;left:.75rem;background:var(--orange);color:#fff;font-size:.57rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .58rem;border-radius:3px}
+    .mcard-body{padding:1.2rem 1.3rem 1.4rem}
+    .mcard-cat{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.28rem}
+    .mcard-name{font-family:var(--fh);font-size:1.08rem;font-weight:700;color:var(--dark);margin-bottom:.38rem}
+    .mcard-desc{font-size:.79rem;color:var(--muted);line-height:1.62}
+    .mi-burger  {background-image:url('/images/burger.png')}
+    .mi-poke    {background-image:url('/images/poke-bowl.png')}
+    .mi-coffee  {background-image:url('/images/interior.png')}
+    .mi-steak   {background-image:url('/images/mixed-grill.png')}
+    .mi-tacos   {background-image:url('/images/loaded-fries.png')}
+    .mi-cake    {background-image:url('/images/cheesecake.png')}
+    .mi-shaksh  {background-image:url('/images/mixed-grill.png')}
+    .mi-mushroom{background-image:url('/images/nachos.png')}
+    .mi-smoothie{background-image:url('/images/poke-bowl.png')}
+
+    /* INSTAGRAM */
+    #instagram{background:linear-gradient(135deg,#fff8f2,#fef0e3);padding:6rem 4rem}
+    .ig-inner{max-width:1100px;margin:0 auto}
+    .ig-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem}
+    .ig-brand a{font-family:var(--fh);font-size:1.5rem;font-weight:900;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+    .ig-brand p{font-size:.82rem;color:var(--muted);margin-top:.2rem}
+    .ig-nums{display:flex;gap:2.5rem}
+    .ig-nv{font-family:var(--fh);font-size:1.6rem;font-weight:900;color:var(--dark);line-height:1}
+    .ig-nl{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+    .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.55rem;margin-bottom:2.2rem}
+    .ig-tile{aspect-ratio:1/1;border-radius:10px;background-size:cover;background-position:center;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+    .ig-tile:hover{transform:scale(1.05)}
+    .ig-tile::after{content:'';position:absolute;inset:0;background:rgba(232,98,26,0);transition:background .3s;border-radius:10px}
+    .ig-tile:hover::after{background:rgba(232,98,26,.22)}
+    .it1{background-image:url('/images/mixed-grill.png')}
+    .it2{background-image:url('/images/burger.png')}
+    .it3{background-image:url('/images/poke-bowl.png')}
+    .it4{background-image:url('/images/cheesecake.png')}
+    .it5{background-image:url('/images/carrot-cake.png')}
+    .it6{background-image:url('/images/nachos.png')}
+    .ig-cta{text-align:center}
+    .ig-cta p{font-family:var(--fi);font-style:italic;color:var(--muted);font-size:1.05rem;margin-bottom:1rem}
+
+    /* REVIEWS */
+    #reviews{background:#fff;padding:7rem 4rem}
+    .rev-inner{max-width:1100px;margin:0 auto}
+    .rev-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+    .scores{display:flex;gap:1rem}
+    .score-box{background:var(--light);border-radius:10px;padding:1.1rem 1.5rem;text-align:center;border:1.5px solid #ead9c4}
+    .score-big{font-family:var(--fh);font-size:2.2rem;font-weight:900;color:var(--dark);line-height:1}
+    .score-stars{color:var(--gold);font-size:.85rem;margin:.2rem 0}
+    .score-src{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+    .rcard{background:var(--off);border-radius:12px;padding:1.8rem;border:1.5px solid transparent;transition:border-color .25s,box-shadow .25s}
+    .rcard:hover{border-color:#f0d8be;box-shadow:0 8px 28px rgba(0,0,0,.07)}
+    .rcard-stars{color:var(--gold);font-size:.82rem;margin-bottom:.75rem;letter-spacing:.06em}
+    .rcard-text{font-family:var(--fi);font-style:italic;font-size:1rem;color:var(--dark);line-height:1.75;margin-bottom:1.2rem}
+    .rcard-author{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+    .rcard-platform{font-size:.62rem;color:var(--muted);margin-top:.1rem}
+
+    /* LOCATION */
+    #location{background:var(--light);padding:7rem 4rem}
+    .loc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+    .loc-text p{color:var(--muted);font-size:.9rem;margin-bottom:1.4rem;line-height:1.8}
+    .clist{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin-bottom:2rem}
+    .ci{display:flex;gap:1rem;align-items:flex-start}
+    .ci-icon{width:2.2rem;height:2.2rem;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .ci-info strong{display:block;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.1rem}
+    .ci-info span{font-size:.85rem;color:var(--dark)}
+    .ci-info a{color:var(--dark);text-decoration:none}.ci-info a:hover{color:var(--orange)}
+    .hours-lbl{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem}
+    .hrow{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #ddd;font-size:.83rem}
+    .hrow span:first-child{color:var(--muted)}
+    .hrow span:last-child{color:var(--green);font-weight:600}
+    .map-card{background:#fff;border-radius:14px;padding:2.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.2rem;box-shadow:0 4px 28px rgba(0,0,0,.08)}
+    .map-pin{font-size:3rem}
+    .map-card h3{font-family:var(--fh);font-size:1.3rem;color:var(--dark)}
+    .map-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+    .map-socials{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:.4rem}
+    .map-socials a{font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);text-decoration:none;border:1.5px solid #f0d0b0;padding:.38rem .82rem;border-radius:4px;transition:all .2s;background:#fff}
+    .map-socials a:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+    /* CTA */
+    #cta{background:linear-gradient(135deg,var(--orange),#c0390b);padding:8rem 4rem;text-align:center;position:relative;overflow:hidden}
+    #cta::before{content:"LET'S MEAT HERE";position:absolute;font-family:var(--fh);font-size:10vw;font-weight:900;color:rgba(255,255,255,.06);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:.05em}
+    .cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+    .cta-eye{font-family:var(--fi);font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:.8rem}
+    .cta-title{font-family:var(--fh);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:900;color:#fff;line-height:1.08;margin-bottom:1rem}
+    .cta-sub{color:rgba(255,255,255,.82);font-size:.92rem;line-height:1.8;margin-bottom:2.5rem}
+    .cta-acts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+    /* ═══════════════════════════════════════
+       FULL MENU PAGE
+    ═══════════════════════════════════════ */
+    #page-menu{padding-top:5rem;background:var(--w);min-height:100vh}
+
+    .menu-hero{background:linear-gradient(135deg,var(--dark),var(--mid));padding:5rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .menu-hero::before{content:"MENU";position:absolute;font-family:var(--fh);font-size:20vw;font-weight:900;color:rgba(255,255,255,.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none}
+    .menu-hero-inner{position:relative;z-index:1}
+    .menu-hero-eye{font-family:var(--fi);font-style:italic;color:var(--gold);font-size:1.1rem;margin-bottom:.7rem}
+    .menu-hero-title{font-family:var(--fh);font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:#fff;margin-bottom:.7rem}
+    .menu-hero-sub{color:rgba(255,255,255,.6);font-size:.9rem;margin-bottom:1.5rem}
+    .menu-price-note{display:inline-flex;gap:2rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.8rem 2rem;flex-wrap:wrap;justify-content:center}
+    .mpn-item{text-align:center}
+    .mpn-label{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.2rem}
+    .mpn-val{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--gold)}
+
+    /* MENU TABS */
+    .menu-tabs-wrap{position:sticky;top:72px;z-index:100;background:#fff;border-bottom:1px solid #eee;padding:.8rem 4rem;overflow-x:auto}
+    .menu-tabs{display:flex;gap:.5rem;min-width:max-content}
+    .mtab{background:transparent;border:1.5px solid #e5e5e5;color:var(--muted);font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.45rem 1.1rem;border-radius:20px;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .mtab:hover{border-color:var(--orange);color:var(--orange)}
+    .mtab.active{background:var(--orange);border-color:var(--orange);color:#fff}
+
+    /* MENU SECTIONS */
+    .menu-body{max-width:1100px;margin:0 auto;padding:4rem}
+    .menu-section{margin-bottom:4rem;scroll-margin-top:160px}
+    .msec-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:2px solid var(--light)}
+    .msec-icon{font-size:1.8rem}
+    .msec-title{font-family:var(--fh);font-size:1.6rem;font-weight:700;color:var(--dark)}
+    .msec-sub{font-size:.8rem;color:var(--muted);margin-top:.1rem}
+
+    /* MENU ITEM ROWS */
+    .menu-items{display:flex;flex-direction:column;gap:.8rem}
+    .menu-item{display:flex;align-items:center;gap:1.5rem;background:var(--off);border-radius:10px;padding:1.2rem 1.5rem;transition:box-shadow .2s,transform .2s;border:1.5px solid transparent}
+    .menu-item:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateX(4px);border-color:#f0d8be}
+    .menu-item-img{width:80px;height:80px;border-radius:8px;background-size:cover;background-position:center;flex-shrink:0}
+    .menu-item-info{flex:1}
+    .menu-item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.3rem}
+    .menu-item-name{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--dark)}
+    .menu-item-price{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--orange);white-space:nowrap}
+    .menu-item-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
+    .menu-item-tags{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap}
+    .tag{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .5rem;border-radius:3px}
+    .tag-sig{background:#fff3e8;color:var(--orange)}
+    .tag-new{background:#e8f5e9;color:var(--green)}
+    .tag-hot{background:#ffeaea;color:var(--red)}
+    .tag-veg{background:#e8f5e9;color:var(--green)}
+    .tag-pop{background:#fff8e1;color:#b8860b}
+
+    /* COFFEE GRID */
+    .coffee-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+    .coffee-item{background:var(--off);border-radius:10px;padding:1.2rem 1.4rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;border:1.5px solid transparent;transition:all .2s}
+    .coffee-item:hover{border-color:#f0d8be;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+    .coffee-name{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.3rem}
+    .coffee-desc{font-size:.78rem;color:var(--muted);line-height:1.55}
+    .coffee-price{font-family:var(--fh);font-size:.95rem;font-weight:700;color:var(--orange);white-space:nowrap}
+
+    /* FOOTER */
+    footer{background:var(--dark);color:#888;padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .foot-logo{font-family:var(--fh);font-size:1.35rem;font-weight:900;color:var(--orange)}
+    .foot-tag{font-family:var(--fi);font-style:italic;font-size:.83rem;color:rgba(212,168,67,.45)}
+    footer p{font-size:.7rem;letter-spacing:.05em}
+    .foot-links{display:flex;gap:1.2rem}
+    .foot-links a{color:#888;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:color .2s}
+    .foot-links a:hover{color:var(--orange)}
+
+    /* BILINGUAL */
+    .fr{display:block}.en{display:none}
+    body.lang-en .fr{display:none}body.lang-en .en{display:block}
+    span.fr{display:inline}span.en{display:none}
+    body.lang-en span.fr{display:none}body.lang-en span.en{display:inline}
+
+    /* ANIM */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem}.nav-links{display:none}
+      section,#about,#menu-preview,#instagram,#reviews,#location,#cta{padding:4rem 1.5rem}
+      #hero{grid-template-columns:1fr}.hero-right{height:50vw}
+      .hero-left{padding:7rem 1.5rem 3rem}
+      .about-inner,.loc-inner{grid-template-columns:1fr;gap:2.5rem}
+      .cards3,.rev-grid{grid-template-columns:1fr 1fr}
+      .ig-grid{grid-template-columns:repeat(3,1fr)}
+      .menu-tabs-wrap{padding:.8rem 1.5rem}
+      .menu-body{padding:2rem 1.5rem}
+      .coffee-grid{grid-template-columns:1fr}
+      footer{flex-direction:column;text-align:center}
+      .menu-hero{padding:4rem 1.5rem}
+    }
+    @media(max-width:580px){
+      .cards3,.rev-grid{grid-template-columns:1fr}
+      .ig-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-stats{gap:1.3rem}.scores{flex-direction:column}
+      .about-imgs{grid-template-rows:180px 130px}
+      .menu-item-img{width:60px;height:60px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LANG -->
+<div class="lang-toggle">
+  <button class="lbtn active" onclick="setLang('fr')">FR</button>
+  <button class="lbtn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="showPage('home');return false" style="display:flex;align-items:center"><img src="/images/logo.png" alt="SAM's" style="height:72px;width:auto;object-fit:contain"></a>
+  <ul class="nav-links">
+    <li><a href="#about" onclick="showPage('home')"><span class="fr">À propos</span><span class="en">About</span></a></li>
+    <li><button class="nav-menu-btn" id="nav-menu-btn" onclick="showPage('menu')">Menu</button></li>
+    <li><a href="#instagram" onclick="showPage('home')">Instagram</a></li>
+    <li><a href="#reviews" onclick="showPage('home')"><span class="fr">Avis</span><span class="en">Reviews</span></a></li>
+    <li><a href="#location" onclick="showPage('home')"><span class="fr">Nous trouver</span><span class="en">Find Us</span></a></li>
+    <li><a href="tel:+2250544020000" class="nav-cta"><span class="fr">📞 Réserver</span><span class="en">📞 Reserve</span></a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══════════ HOME PAGE ═══════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-badge"><div class="hb-dot"></div><span>@samsabidjan · 65.3K followers</span></div>
+      <p class="hero-tag">Café · Kitchen · People</p>
+      <h1 class="hero-title"><span class="fr">La table<br>d'<em>Abidjan.</em></span><span class="en">The <em>heart</em> of<br>Abidjan.</span></h1>
+      <div class="hero-motto">Let's Meat Here 🥩</div>
+      <p class="hero-desc">
+        <span class="fr">Burgers gourmets, poke bowls, tacos, steaks grillés, café de spécialité — et une ambiance qui donne envie de rester. Zone 4C Marcory, Abidjan.</span>
+        <span class="en">Gourmet burgers, poke bowls, tacos, grilled steaks, specialty coffee — and an atmosphere that makes you never want to leave. Zone 4C Marcory, Abidjan.</span>
+      </p>
+      <div class="hero-acts">
+        <button onclick="showPage('menu')" class="btn btn-orange"><span class="fr">Voir le menu</span><span class="en">See the menu</span></button>
+        <a href="tel:+2250544020000" class="btn btn-outline">📞 05 44 02 0000</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">65.3K</div><div class="hs-lbl">Instagram</div></div>
+        <div><div class="hs-num">4.3★</div><div class="hs-lbl">Google</div></div>
+        <div><div class="hs-num">5/5</div><div class="hs-lbl">Facebook</div></div>
+        <div><div class="hs-num">2020</div><div class="hs-lbl"><span class="fr">Fondé</span><span class="en">Founded</span></div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-img"></div>
+      <div class="hero-right-overlay"></div>
+      <div class="hero-caption">
+        <h3><span class="fr">Le Cheesebomb Burger</span><span class="en">The Cheesebomb Burger</span></h3>
+        <p><span class="fr">Notre signature — à ne pas manquer</span><span class="en">Our signature — not to be missed</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-imgs-wrap">
+        <div class="about-imgs">
+          <div class="aimg full ai3"></div>
+          <div class="aimg ai1"></div>
+          <div class="aimg ai2"></div>
+        </div>
+        <div class="about-float">
+          <div class="af-big"><span class="fr">Ouvert</span><span class="en">Open</span></div>
+          <div class="af-sm"><span class="fr">9h – 22h30 · 7j/7</span><span class="en">9am–10:30pm · Daily</span></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="eyebrow"><span class="fr">Notre histoire</span><span class="en">Our story</span></p>
+        <h2 class="sec-title"><span class="fr">Né d'une passion pour la cuisine fusion.</span><span class="en">Born from a passion for fusion cuisine.</span></h2>
+        <div class="about-quote">"Where the food is good, the coffee hot &amp; the people happy."</div>
+        <p class="fr">Fondé en 2020 par Sam, passionné de cuisine, SAM's est né d'un désir de partager des saveurs internationales et fusion dans un cadre moderne et chaleureux. Sur la Rue Pierre et Marie Curie, Zone 4C Marcory, notre devanture parisienne accueille chaque jour des convives en quête de qualité.</p>
+        <p class="en">Founded in 2020 by Sam, a passionate cook, SAM's was born from a desire to share international fusion flavours in a modern, warm setting. On Rue Pierre et Marie Curie, Zone 4C Marcory, our Parisian-style storefront welcomes guests seeking quality every single day.</p>
+        <p class="fr">Notre cuisine célèbre l'international et la générosité — des burgers gourmets aux poke bowls, des tacos mexicains revisités aux tartares frais. Et notre café de spécialité (Chemex, Syphon, Cold Drip) est dans une classe à part.</p>
+        <p class="en">Our kitchen celebrates international flavours and generosity — from gourmet burgers to poke bowls, from revisited Mexican tacos to fresh tartares. And our specialty coffee (Chemex, Syphon, Cold Drip) is in a class of its own.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pillar-icon">🍔</div><div class="pillar-title">Burgers</div><p class="fr">Cheesebomb, Mushroom, Lebanese, Mexican & plus.</p><p class="en">Cheesebomb, Mushroom, Lebanese, Mexican & more.</p></div>
+          <div class="pillar"><div class="pillar-icon">🥗</div><div class="pillar-title">Bowls</div><p class="fr">Poke Bowl, Quinoa, Smoothie Bowl.</p><p class="en">Poke Bowl, Quinoa, Smoothie Bowl.</p></div>
+          <div class="pillar"><div class="pillar-icon">☕</div><div class="pillar-title">Café</div><p class="fr">Chemex, Syphon, French Press, Cold Drip.</p><p class="en">Chemex, Syphon, French Press, Cold Drip.</p></div>
+          <div class="pillar"><div class="pillar-icon">🍰</div><div class="pillar-title"><span class="fr">Desserts</span><span class="en">Desserts</span></div><p class="fr">Cheesecake Spéculoos, Red Velvet, Cinnamon Roll.</p><p class="en">Speculoos Cheesecake, Red Velvet, Cinnamon Roll.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU PREVIEW -->
+  <section id="menu-preview">
+    <div class="mp-inner">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow"><span class="fr">Aperçu du menu</span><span class="en">Menu preview</span></p>
+          <h2 class="sec-title"><span class="fr">Quelques incontournables</span><span class="en">A few highlights</span></h2>
+          <p class="sec-head-sub fr">De la cuisine internationale fusion au café de spécialité — il y en a pour tous les goûts.</p>
+          <p class="sec-head-sub en">From international fusion cuisine to specialty coffee — something for everyone.</p>
+        </div>
+        <button onclick="showPage('menu')" class="btn btn-dark" style="align-self:flex-end;white-space:nowrap"><span class="fr">Menu complet →</span><span class="en">Full Menu →</span></button>
+      </div>
+      <div class="cards3">
+        <div class="mcard">
+          <div class="mcard-img mi-burger"><div class="mcard-badge">⭐ Signature</div></div>
+          <div class="mcard-body">
+            <div class="mcard-cat">Burgers</div>
+            <div class="mcard-name">Cheesebomb Burger</div>
+            <p class="mcard-desc fr">Une explosion de fromage fondu dans chaque bouchée. Le burger qui a fait parler de SAM's dans tout Abidjan.</p>
+            <p class="mcard-desc en">An explosion of melted cheese in every bite. The burger that put SAM's on every foodie's list in Abidjan.</p>
+          </div>
+        </div>
+        <div class="mcard">
+          <div class="mcard-img mi-poke"><div class="mcard-badge">🔥 Best-seller</div></div>
+          <div class="mcard-body">
+            <div class="mcard-cat">Bowls</div>
+            <div class="mcard-name">Poke Bowl Thon Frais</div>
+            <p class="mcard-desc fr">Thon frais, riz vinaigré, légumes croquants et sauce maison — frais, coloré, irrésistible. Un des rares Poke Bowls à Abidjan.</p>
+            <p class="mcard-desc en">Fresh tuna, seasoned rice, crunchy vegetables, house sauce — fresh, colourful, irresistible. One of the rare Poke Bowls in Abidjan.</p>
+          </div>
+        </div>
+        <div class="mcard">
+          <div class="mcard-img mi-coffee"></div>
+          <div class="mcard-body">
+            <div class="mcard-cat"><span class="fr">Café de spécialité</span><span class="en">Specialty Coffee</span></div>
+            <div class="mcard-name">Chemex &amp; Syphon</div>
+            <p class="mcard-desc fr">Grains sélectionnés, préparés selon des méthodes d'exception. Chemex, Syphon, Cold Drip, French Press — le café est notre passion.</p>
+            <p class="mcard-desc en">Selected beans prepared with exceptional methods. Chemex, Syphon, Cold Drip, French Press — coffee is our passion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram">
+    <div class="ig-inner">
+      <div class="ig-top">
+        <div class="ig-brand">
+          <a href="https://www.instagram.com/samsabidjan/" target="_blank">📷 @samsabidjan</a>
+          <p>• Cafe • Kitchen • People — Abidjan, Côte d'Ivoire</p>
+        </div>
+        <div class="ig-nums">
+          <div><div class="ig-nv">65.3K</div><div class="ig-nl"><span class="fr">Abonnés</span><span class="en">Followers</span></div></div>
+          <div><div class="ig-nv">4,077</div><div class="ig-nl">Posts</div></div>
+          <div><div class="ig-nv">38K</div><div class="ig-nl">Facebook Likes</div></div>
+        </div>
+      </div>
+      <div class="ig-grid">
+        <div class="ig-tile it1"></div><div class="ig-tile it2"></div><div class="ig-tile it3"></div>
+        <div class="ig-tile it4"></div><div class="ig-tile it5"></div><div class="ig-tile it6"></div>
+      </div>
+      <div class="ig-cta">
+        <p class="fr">Rejoignez 65 000 gourmands qui suivent l'aventure SAM's chaque jour.</p>
+        <p class="en">Join 65,000 food lovers following the SAM's adventure every day.</p>
+        <a href="https://www.instagram.com/samsabidjan/" target="_blank" class="btn btn-orange"><span class="fr">Suivre @samsabidjan</span><span class="en">Follow @samsabidjan</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="rev-inner">
+      <div class="rev-head">
+        <div>
+          <p class="eyebrow"><span class="fr">Ce qu'ils disent</span><span class="en">What they say</span></p>
+          <h2 class="sec-title"><span class="fr">Adoré par Abidjan.</span><span class="en">Loved by Abidjan.</span></h2>
+        </div>
+        <div class="scores">
+          <div class="score-box"><div class="score-big">4.3</div><div class="score-stars">★★★★☆</div><div class="score-src">Google · 481</div></div>
+          <div class="score-box"><div class="score-big">5.0</div><div class="score-stars">★★★★★</div><div class="score-src">Facebook · 10</div></div>
+          <div class="score-box"><div class="score-big">4.3</div><div class="score-stars">★★★★☆</div><div class="score-src">Tripadvisor · 7</div></div>
+        </div>
+      </div>
+      <div class="rev-grid">
+        <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text fr">"Le meilleur burger américain d'Abidjan, sans aucun doute. J'y vais des dizaines de fois. Le service de Fadi est toujours super sympathique et rapide !"</p><p class="rcard-text en">"Best American-style food in Abidjan, no doubt! Been here countless times. Their burgers are absolutely good and tasty! Fadi always super friendly and fast!"</p><div class="rcard-author">Jennifel Y.</div><div class="rcard-platform">Google · Août 2024</div></div>
+        <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text fr">"SAM's respecte vraiment son slogan 'Let's Meat Here'. Viande de qualité grillée à la perfection, service rapide et professionnel. Un must-visit pour les amoureux de viande."</p><p class="rcard-text en">"SAM's delivers on its motto 'Let's Meat Here'. Outstanding meat quality, grilled to perfection, fast and professional service. A must-visit for meat lovers in Abidjan."</p><div class="rcard-author">Gregor M.</div><div class="rcard-platform">Google · 2025</div></div>
+        <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text fr">"Le Poke Bowl au thon frais était délicieux et frais. Parmi les rares restaurants à proposer ça à Abidjan. Le Shakshuka au brunch est aussi excellent !"</p><p class="rcard-text en">"The fresh tuna Poke Bowl was delicious and fresh. One of the rare restaurants to offer this in Abidjan. The Shakshuka at brunch is also excellent!"</p><div class="rcard-author">Tripadvisor Review</div><div class="rcard-platform">Tripadvisor</div></div>
+        <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text fr">"Menu varié et tout est excellent. Les fans de burgers seront au paradis car il y a plein de recettes différentes. Mention spéciale pour le cheesecake Spéculoos !"</p><p class="rcard-text en">"Varied menu and everything is very good. Burger fans will be in heaven with plenty of different recipes. Special mention for the Speculoos cheesecake!"</p><div class="rcard-author">Tripadvisor Review</div><div class="rcard-platform">Tripadvisor · Jan 2025</div></div>
+        <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text fr">"Super expérience — burgers excellents et Poke Bowls à ne pas manquer. L'un des rares restos à les proposer à Abidjan. À répéter sans hésitation !"</p><p class="rcard-text en">"Excellent burgers and Poke Bowls — one of the rare restaurants to offer it in Abidjan. A great experience to be repeated without hesitation!"</p><div class="rcard-author">Tripadvisor Review</div><div class="rcard-platform">Tripadvisor</div></div>
+        <div class="rcard"><div class="rcard-stars">★★★★☆</div><p class="rcard-text fr">"Super endroit pour un repas en famille ou un rendez-vous romantique. Cheeseburger juteux avec un pain frais, frites excellentes et un Poke Bowl au thon absolument délicieux."</p><p class="rcard-text en">"Really nice place for family or a date. Juicy cheeseburger with fresh bun, excellent fries, and an absolutely delicious tuna Poke Bowl."</p><div class="rcard-author">Wanderlog Review</div><div class="rcard-platform">Google</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="loc-inner">
+      <div class="loc-text">
+        <p class="eyebrow"><span class="fr">Nous trouver</span><span class="en">Find Us</span></p>
+        <h2 class="sec-title"><span class="fr">Venez nous rendre visite.</span><span class="en">Come visit us.</span></h2>
+        <p class="fr">Ouverts tous les jours depuis 2020. Climatisé, cadre moderne, menu enfant disponible et parking à proximité. Idéal pour un brunch, déjeuner ou dîner.</p>
+        <p class="en">Open every day since 2020. Air-conditioned, modern setting, kids menu available and parking nearby. Perfect for brunch, lunch or dinner.</p>
+        <ul class="clist">
+          <li class="ci"><div class="ci-icon">📍</div><div class="ci-info"><strong><span class="fr">Adresse</span><span class="en">Address</span></strong><span>Rue Pierre et Marie Curie (avec Rue Marconi), Zone 4C Marcory, Abidjan, Côte d'Ivoire</span></div></li>
+          <li class="ci"><div class="ci-icon">📞</div><div class="ci-info"><strong><span class="fr">Téléphone</span><span class="en">Phone</span></strong><span><a href="tel:+2250544020000">05 44 02 0000</a></span></div></li>
+          <li class="ci"><div class="ci-icon">📷</div><div class="ci-info"><strong>Instagram</strong><span><a href="https://www.instagram.com/samsabidjan/" target="_blank">@samsabidjan</a></span></div></li>
+          <li class="ci"><div class="ci-icon">👍</div><div class="ci-info"><strong>Facebook</strong><span><a href="https://www.facebook.com/samsabidjan" target="_blank">SAM's Abidjan · 38K likes</a></span></div></li>
+          <li class="ci"><div class="ci-icon">🛵</div><div class="ci-info"><strong><span class="fr">Livraison</span><span class="en">Delivery</span></strong><span><a href="https://glovoapp.com" target="_blank">Glovo</a></span></div></li>
+        </ul>
+        <div class="hours-lbl"><span class="fr">Horaires d'ouverture</span><span class="en">Opening Hours</span></div>
+        <div class="hrow"><span><span class="fr">Lundi – Jeudi</span><span class="en">Monday – Thursday</span></span><span>9:00 – 22:30</span></div>
+        <div class="hrow"><span>Vendredi / Friday</span><span>9:00 – 23:00</span></div>
+        <div class="hrow"><span>Samedi / Saturday</span><span>9:00 – 23:00</span></div>
+        <div class="hrow"><span>Dimanche / Sunday</span><span>9:00 – 22:30</span></div>
+      </div>
+      <div class="map-card">
+        <div class="map-pin">📍</div>
+        <h3>SAM's Abidjan</h3>
+        <p>Rue Pierre et Marie Curie<br>Zone 4C Marcory, Abidjan<br>Côte d'Ivoire</p>
+        <a href="https://maps.google.com/?q=SAM's+Abidjan+Rue+Pierre+Marie+Curie+Marcory" target="_blank" class="btn btn-orange btn-sm"><span class="fr">Ouvrir dans Maps</span><span class="en">Open in Maps</span></a>
+        <div class="map-socials">
+          <a href="https://www.instagram.com/samsabidjan/" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/samsabidjan" target="_blank">Facebook</a>
+          <a href="https://glovoapp.com" target="_blank">Glovo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-inner">
+      <p class="cta-eye"><span class="fr">Votre table vous attend</span><span class="en">Your table is waiting</span></p>
+      <h2 class="cta-title"><span class="fr">Venez affamés.<br>Repartez heureux.</span><span class="en">Come hungry.<br>Leave happy.</span></h2>
+      <p class="cta-sub fr">Dîner en amoureux, anniversaire, brunch dominical ou juste un mardi — SAM's est toujours la bonne réponse. Cuisine internationale, café de spécialité et personnes formidables.</p>
+      <p class="cta-sub en">Date night, birthday, Sunday brunch, or just a Tuesday — SAM's is always the right call. International cuisine, specialty coffee and great people.</p>
+      <div class="cta-acts">
+        <a href="tel:+2250544020000" class="btn btn-white">📞 05 44 02 0000</a>
+        <button onclick="showPage('menu')" class="btn btn-outline-white"><span class="fr">Voir le menu complet</span><span class="en">View full menu</span></button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ═══════════ MENU PAGE ═══════════ -->
+<div id="page-menu" class="page">
+
+  <div class="menu-hero">
+    <div class="menu-hero-inner">
+      <p class="menu-hero-eye">Café · Kitchen · People</p>
+      <h1 class="menu-hero-title"><span class="fr">Notre Menu</span><span class="en">Our Menu</span></h1>
+      <p class="menu-hero-sub fr">Cuisine internationale fusion · Ouvert depuis 2020 · Zone 4C Marcory, Abidjan</p>
+      <p class="menu-hero-sub en">International fusion cuisine · Open since 2020 · Zone 4C Marcory, Abidjan</p>
+      <div class="menu-price-note">
+        <div class="mpn-item"><div class="mpn-label"><span class="fr">Petit déj à partir de</span><span class="en">Breakfast from</span></div><div class="mpn-val">4 000 FCFA</div></div>
+        <div class="mpn-item"><div class="mpn-label"><span class="fr">Plat principal à partir de</span><span class="en">Main course from</span></div><div class="mpn-val">7 000 FCFA</div></div>
+        <div class="mpn-item"><div class="mpn-label"><span class="fr">Horaires</span><span class="en">Hours</span></div><div class="mpn-val">9h – 22h30</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="menu-tabs-wrap">
+    <div class="menu-tabs">
+      <button class="mtab active" onclick="scrollToSection('sec-burgers',this)">🍔 Burgers</button>
+      <button class="mtab" onclick="scrollToSection('sec-bowls',this)">🥗 Bowls</button>
+      <button class="mtab" onclick="scrollToSection('sec-mains',this)"><span class="fr">🥩 Plats</span><span class="en">🥩 Mains</span></button>
+      <button class="mtab" onclick="scrollToSection('sec-brunch',this)">🍳 Brunch</button>
+      <button class="mtab" onclick="scrollToSection('sec-salads',this)"><span class="fr">🥙 Entrées</span><span class="en">🥙 Starters</span></button>
+      <button class="mtab" onclick="scrollToSection('sec-coffee',this)">☕ <span class="fr">Café</span><span class="en">Coffee</span></button>
+      <button class="mtab" onclick="scrollToSection('sec-drinks',this)"><span class="fr">🥤 Boissons</span><span class="en">🥤 Drinks</span></button>
+      <button class="mtab" onclick="scrollToSection('sec-desserts',this)"><span class="fr">🍰 Desserts</span><span class="en">🍰 Desserts</span></button>
+    </div>
+  </div>
+
+  <div class="menu-body">
+
+    <!-- BURGERS -->
+    <div class="menu-section" id="sec-burgers">
+      <div class="msec-header">
+        <div class="msec-icon">🍔</div>
+        <div><div class="msec-title">Burgers</div><div class="msec-sub fr">Pain brioche, viande maison, frites incluses</div><div class="msec-sub en">Brioche bun, house-made patty, fries included</div></div>
+      </div>
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-burger"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Cheesebomb Burger</span><span class="menu-item-price">~9 500 FCFA</span></div>
+            <div class="menu-item-desc fr">L'explosion de fromage fondu au cœur du burger. Pain noir, steak maison, triple cheese, sauce spéciale. La nouvelle sensation de SAM's.</div>
+            <div class="menu-item-desc en">An explosion of melted cheese at the heart of the burger. Black bun, house steak, triple cheese, special sauce. SAM's newest sensation.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">⭐ Signature</span><span class="tag tag-new">🆕 New</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-mushroom"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Mushroom SAM's Burger</span><span class="menu-item-price">~9 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Le burger aux champignons sauvages qui a sa propre rubrique. Sauce généreuse, goût spectaculaire. Attention : très relevé !</div>
+            <div class="menu-item-desc en">The wild mushroom burger with its own fan club. Generous sauce, spectacular taste. Warning: very spicy!</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">🔥 Popular</span><span class="tag tag-hot">🌶️ Spicy</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-burger"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Le Libanais</span><span class="en">The Lebanese</span></span><span class="menu-item-price">~9 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Steak haché maison et mozzarella panée — une fusion originale et gourmande sur pain brioche doré.</div>
+            <div class="menu-item-desc en">House-ground steak and breaded mozzarella — an original, indulgent fusion on a golden brioche bun.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🌟 Bestseller</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-burger"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Le Mexicain</span><span class="en">The Mexican</span></span><span class="menu-item-price">~8 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Burger gourmet revisité à la mexicaine — jalapeños, guacamole maison, sauce piquante, un peu de piment.</div>
+            <div class="menu-item-desc en">A gourmet burger with a Mexican twist — jalapeños, house guacamole, hot sauce, a little kick.</div>
+            <div class="menu-item-tags"><span class="tag tag-hot">🌶️ Spicy</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-burger"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Classic Cheeseburger</span><span class="menu-item-price">~7 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Le grand classique — steak juteux, cheddar fondu, laitue fraîche, tomate, cornichons, sauce SAM's. Simple, parfait.</div>
+            <div class="menu-item-desc en">The classic — juicy patty, melted cheddar, fresh lettuce, tomato, pickles, SAM's sauce. Simple, perfect.</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">⭐ Classic</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-tacos"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Fish &amp; Chips Burger</span><span class="menu-item-price">~8 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Filet de poisson croustillant, coleslaw maison, sauce tartare — un burger de la mer qui change tout.</div>
+            <div class="menu-item-desc en">Crispy fish fillet, house coleslaw, tartar sauce — a sea burger that changes everything.</div>
+            <div class="menu-item-tags"><span class="tag tag-new">🐟 Fish</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOWLS -->
+    <div class="menu-section" id="sec-bowls">
+      <div class="msec-header">
+        <div class="msec-icon">🥗</div>
+        <div><div class="msec-title">Bowls</div><div class="msec-sub fr">Frais, nourrissants, colorés</div><div class="msec-sub en">Fresh, nourishing, colourful</div></div>
+      </div>
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-poke"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Poke Bowl Thon Frais</span><span class="menu-item-price">~9 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Thon frais mi-cuit, riz vinaigré, edamame, avocat, concombre, mangue, sauce ponzu maison. Un des rares Poke Bowls authentiques d'Abidjan.</div>
+            <div class="menu-item-desc en">Half-cooked fresh tuna, seasoned rice, edamame, avocado, cucumber, mango, house ponzu sauce. One of the rare authentic Poke Bowls in Abidjan.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">⭐ Signature</span><span class="tag tag-pop">🔥 Popular</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-poke"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Quinoa Bowl</span><span class="menu-item-price">~8 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Quinoa, légumes rôtis de saison, pousses d'épinard, pois chiches croustillants et vinaigrette au citron. Sain et savoureux.</div>
+            <div class="menu-item-desc en">Quinoa, seasonal roasted vegetables, spinach shoots, crispy chickpeas and lemon vinaigrette. Healthy and delicious.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Vegan</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-smoothie"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Smoothie Bowl</span><span class="menu-item-price">~7 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Base de fruits mixés (mangue, banane, fruits rouges), garnie de granola, noix de coco, fruits frais et graines. Idéal au brunch.</div>
+            <div class="menu-item-desc en">Blended fruit base (mango, banana, berries), topped with granola, coconut, fresh fruit and seeds. Perfect for brunch.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Vegan</span><span class="tag tag-new">🥤 Brunch</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-section" id="sec-mains">
+      <div class="msec-header">
+        <div class="msec-icon">🥩</div>
+        <div><div class="msec-title"><span class="fr">Plats Principaux</span><span class="en">Main Courses</span></div><div class="msec-sub fr">Grillés, mijotés, de la mer à la terre</div><div class="msec-sub en">Grilled, braised, surf to turf</div></div>
+      </div>
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-steak"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">SAM's Filet</span><span class="menu-item-price">~12 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Filet grillé à feu ouvert, servi avec frites maison et la sauce dipping signature de SAM's. La sauce fait toute la différence.</div>
+            <div class="menu-item-desc en">Open-flame grilled fillet with house fries and SAM's signature dipping sauce. The sauce makes all the difference.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🥩 Bestseller</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-tacos"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Tacos Mexicains <span class="fr">au Bœuf</span><span class="en">Beef</span></span><span class="menu-item-price">~8 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Tacos revisités façon gourmet — viande épicée, pico de gallo, crème fraîche, jalapeños et herbes fraîches.</div>
+            <div class="menu-item-desc en">Gourmet-style tacos — spiced beef, pico de gallo, sour cream, jalapeños and fresh herbs.</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">🌮 Popular</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-tacos"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Fish Tacos</span><span class="menu-item-price">~8 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Poisson frit croustillant, coleslaw maison, avocat, coriandre et sauce lime dans des tortillas fraîches.</div>
+            <div class="menu-item-desc en">Crispy fried fish, house coleslaw, avocado, coriander and lime sauce in fresh tortillas.</div>
+            <div class="menu-item-tags"><span class="tag tag-new">🐟 Fish</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-poke"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Filet de Mérou</span><span class="menu-item-price">~11 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Filet de mérou grillé avec légumes de saison, beurre d'herbes et riz basmati. La mer dans l'assiette.</div>
+            <div class="menu-item-desc en">Grilled grouper fillet with seasonal vegetables, herb butter and basmati rice. The sea on your plate.</div>
+            <div class="menu-item-tags"><span class="tag tag-new">🐠 Fish</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-steak"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Brochettes de Gambas</span><span class="menu-item-price">~11 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Gambas marinées et grillées à la perfection, servies sur riz ou avec des légumes sautés et sauce maison.</div>
+            <div class="menu-item-desc en">Marinated and perfectly grilled prawns, served on rice or with sautéed vegetables and house sauce.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🍤 Seafood</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BRUNCH -->
+    <div class="menu-section" id="sec-brunch">
+      <div class="msec-header">
+        <div class="msec-icon">🍳</div>
+        <div><div class="msec-title">Brunch</div><div class="msec-sub fr">Disponible le matin · À partir de 4 000 FCFA</div><div class="msec-sub en">Available in the morning · From 4,000 FCFA</div></div>
+      </div>
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-shaksh"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Shakshuka</span><span class="menu-item-price">~6 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Œufs pochés dans une sauce tomate épicée aux poivrons et épices orientales, servis avec pain grillé. Un classique du brunch.</div>
+            <div class="menu-item-desc en">Eggs poached in a spiced tomato and pepper sauce with oriental spices, served with toasted bread. A brunch classic.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Veg</span><span class="tag tag-pop">☀️ Brunch Fav</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-poke"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Avocado &amp; Salmon Toast</span><span class="menu-item-price">~7 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Pain de seigle grillé, avocat écrasé, saumon fumé, œuf poché, câpres et citron. Le brunch chic par excellence.</div>
+            <div class="menu-item-desc en">Toasted rye bread, smashed avocado, smoked salmon, poached egg, capers and lemon. The ultimate chic brunch.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🥑 Brunch</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-smoothie"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Chia Pudding</span><span class="menu-item-price">~5 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Pudding de chia au lait de coco, fruits frais de saison, granola croquant et miel. Léger et nutritif.</div>
+            <div class="menu-item-desc en">Coconut milk chia pudding, seasonal fresh fruit, crunchy granola and honey. Light and nutritious.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Healthy</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-coffee"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Plateau Petit Déjeuner</span><span class="en">Breakfast Board</span></span><span class="menu-item-price">à partir de 4 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Viennoiseries fraîches, confiture maison, beurre, jus de fruits frais et café de spécialité. Le réveil parfait.</div>
+            <div class="menu-item-desc en">Fresh pastries, house jam, butter, fresh fruit juice and specialty coffee. The perfect wake-up.</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">☕ Breakfast</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SALADS & STARTERS -->
+    <div class="menu-section" id="sec-salads">
+      <div class="msec-header">
+        <div class="msec-icon">🥙</div>
+        <div><div class="msec-title"><span class="fr">Entrées & Salades</span><span class="en">Starters & Salads</span></div><div class="msec-sub fr">Pour commencer ou accompagner</div><div class="msec-sub en">To start or on the side</div></div>
+      </div>
+      <div class="menu-items">
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-poke"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Salade Burrata</span><span class="menu-item-price">~8 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Burrata crémeuse sur lit de roquette, tomates cerises, pêche de saison, basilic frais et vinaigrette balsamique.</div>
+            <div class="menu-item-desc en">Creamy burrata on a bed of rocket, cherry tomatoes, seasonal peach, fresh basil and balsamic dressing.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Veg</span><span class="tag tag-sig">✨ Fresh</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-tacos"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Tartare de Bœuf</span><span class="menu-item-price">~10 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Bœuf haché à la minute, câpres, échalotes, moutarde de Dijon, jaune d'œuf et toast grillé. Préparé devant vous.</div>
+            <div class="menu-item-desc en">Beef hand-chopped to order, capers, shallots, Dijon mustard, egg yolk and grilled toast. Prepared fresh.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🥩 Specialty</span></div>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-img mi-steak"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Frites Maison</span><span class="menu-item-price">~3 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Frites coupées maison, croustillantes à l'extérieur, fondantes à l'intérieur. Avec sauce dipping SAM's.</div>
+            <div class="menu-item-desc en">House-cut fries, crispy outside, fluffy inside. With SAM's dipping sauce.</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">🍟 Side</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COFFEE -->
+    <div class="menu-section" id="sec-coffee">
+      <div class="msec-header">
+        <div class="msec-icon">☕</div>
+        <div><div class="msec-title"><span class="fr">Café de Spécialité</span><span class="en">Specialty Coffee</span></div><div class="msec-sub fr">Grains sélectionnés · Méthodes d'exception</div><div class="msec-sub en">Selected beans · Exceptional brewing methods</div></div>
+      </div>
+      <div class="coffee-grid">
+        <div class="coffee-item"><div><div class="coffee-name">Chemex</div><div class="coffee-desc fr">Filtration lente qui révèle les arômes floraux et fruités du café. La méthode emblématique de SAM's.</div><div class="coffee-desc en">Slow filtration that reveals the floral and fruity aromas of the coffee. SAM's signature method.</div></div><div class="coffee-price">~3 500 FCFA</div></div>
+        <div class="coffee-item"><div><div class="coffee-name">Syphon</div><div class="coffee-desc fr">Méthode spectaculaire à la vapeur — un café propre, brillant et riche en nuances. Le favori de nos clients.</div><div class="coffee-desc en">Spectacular vacuum method — a clean, bright coffee rich in nuance. Our customers' favourite.</div></div><div class="coffee-price">~3 500 FCFA</div></div>
+        <div class="coffee-item"><div><div class="coffee-name">Cold Drip</div><div class="coffee-desc fr">Extraction à froid sur 8–12h, concentré intense et doux à la fois. Servir sur glace.</div><div class="coffee-desc en">8–12 hour cold extraction, intense and smooth at once. Served over ice.</div></div><div class="coffee-price">~4 000 FCFA</div></div>
+        <div class="coffee-item"><div><div class="coffee-name">French Press</div><div class="coffee-desc fr">Corps plein, texture veloutée — le café comme à la maison mais en version premium.</div><div class="coffee-desc en">Full body, velvety texture — coffee like home but in premium version.</div></div><div class="coffee-price">~3 000 FCFA</div></div>
+        <div class="coffee-item"><div><div class="coffee-name">Espresso / Café Ivoirien</div><div class="coffee-desc fr">Café robusta local de Côte d'Ivoire, torréfié avec soin. Vive la Côte d'Ivoire !</div><div class="coffee-desc en">Local Ivorian robusta coffee, carefully roasted. Vive la Côte d'Ivoire!</div></div><div class="coffee-price">~2 000 FCFA</div></div>
+        <div class="coffee-item"><div><div class="coffee-name">Cappuccino / Latte</div><div class="coffee-desc fr">Espresso SAM's, lait micro-moussé, servi chaud ou glacé selon votre envie.</div><div class="coffee-desc en">SAM's espresso, micro-foamed milk, served hot or iced as you prefer.</div></div><div class="coffee-price">~2 500 FCFA</div></div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-section" id="sec-drinks">
+      <div class="msec-header">
+        <div class="msec-icon">🥤</div>
+        <div><div class="msec-title"><span class="fr">Boissons</span><span class="en">Drinks</span></div><div class="msec-sub fr">Fraîches, naturelles, avec ou sans alcool</div><div class="msec-sub en">Fresh, natural, with or without alcohol</div></div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-item-img mi-smoothie"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Smoothies Fruits Frais</span><span class="en">Fresh Fruit Smoothies</span></span><span class="menu-item-price">~4 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Mangue, fruits de la passion, fraise, ananas ou mixtes — tous préparés avec de vrais fruits frais.</div>
+            <div class="menu-item-desc en">Mango, passion fruit, strawberry, pineapple or mixed — all made with real fresh fruit.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Fresh</span></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img mi-coffee"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Jus de Fruits Frais</span><span class="en">Fresh Fruit Juices</span></span><span class="menu-item-price">~3 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Pressés à la minute — orange, citron vert, gingembre, bissap et plus selon la saison.</div>
+            <div class="menu-item-desc en">Freshly pressed — orange, lime, ginger, bissap and more depending on the season.</div>
+            <div class="menu-item-tags"><span class="tag tag-veg">🌱 Natural</span></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img mi-coffee"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name"><span class="fr">Cocktails Signatures</span><span class="en">Signature Cocktails</span></span><span class="menu-item-price">~6 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Créations tropicales SAM's — disponibles avec ou sans alcool. Demandez la carte du bar à votre serveur.</div>
+            <div class="menu-item-desc en">SAM's tropical creations — available with or without alcohol. Ask your server for the bar menu.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">🍹 Cocktails</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-section" id="sec-desserts">
+      <div class="msec-header">
+        <div class="msec-icon">🍰</div>
+        <div><div class="msec-title">Desserts</div><div class="msec-sub fr">Faits maison · Finir en beauté</div><div class="msec-sub en">House-made · End on a high note</div></div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item">
+          <div class="menu-item-img mi-cake"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Cheesecake Spéculoos</span><span class="menu-item-price">~5 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Base spéculoos croustillante, crème onctueuse de fromage frais, coulis de caramel. Le dessert star de SAM's selon les clients Tripadvisor.</div>
+            <div class="menu-item-desc en">Crispy speculoos base, smooth cream cheese, caramel coulis. SAM's star dessert according to Tripadvisor customers.</div>
+            <div class="menu-item-tags"><span class="tag tag-sig">⭐ Must-try</span><span class="tag tag-pop">🔥 Popular</span></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img mi-cake"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Red Velvet Cake</span><span class="menu-item-price">~4 500 FCFA</span></div>
+            <div class="menu-item-desc fr">Gâteau moelleux rouge velours, glaçage cream cheese, décorations maison. Un classique américain revisité.</div>
+            <div class="menu-item-desc en">Moist red velvet cake, cream cheese frosting, house decorations. An American classic reimagined.</div>
+            <div class="menu-item-tags"><span class="tag tag-new">🎂 Cake</span></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img mi-cake"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Cinnamon Roll</span><span class="menu-item-price">~4 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Roulé à la cannelle fraîchement cuit, glaçage vanille, servi tiède. Parfait avec un café Chemex.</div>
+            <div class="menu-item-desc en">Freshly baked cinnamon roll, vanilla glaze, served warm. Perfect with a Chemex coffee.</div>
+            <div class="menu-item-tags"><span class="tag tag-pop">☕ Café Pairing</span></div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img mi-cake"></div>
+          <div class="menu-item-info">
+            <div class="menu-item-top"><span class="menu-item-name">Ice Cream</span><span class="menu-item-price">~3 000 FCFA</span></div>
+            <div class="menu-item-desc fr">Glaces artisanales en plusieurs parfums. Choix du jour selon disponibilité.</div>
+            <div class="menu-item-desc en">Artisan ice cream in several flavours. Daily selection depending on availability.</div>
+            <div class="menu-item-tags"><span class="tag tag-new">🍦 Daily flavours</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM CTA -->
+    <div style="text-align:center;padding:3rem 0 1rem;border-top:2px solid var(--light);margin-top:2rem">
+      <p class="eyebrow"><span class="fr">Prêt à commander ?</span><span class="en">Ready to order?</span></p>
+      <h3 style="font-family:var(--fh);font-size:1.8rem;margin-bottom:.8rem"><span class="fr">Venez nous rendre visite !</span><span class="en">Come visit us!</span></h3>
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Zone 4C Marcory · Rue Pierre et Marie Curie · Abidjan · 9h–22h30</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="tel:+2250544020000" class="btn btn-orange">📞 05 44 02 0000</a>
+        <a href="https://glovoapp.com" target="_blank" class="btn btn-dark">🛵 <span class="fr">Commander sur Glovo</span><span class="en">Order on Glovo</span></a>
+        <button onclick="showPage('home')" class="btn btn-outline"><span class="fr">← Retour au site</span><span class="en">← Back to site</span></button>
+      </div>
+    </div>
+
+  </div><!-- /menu-body -->
+</div><!-- /page-menu -->
+
+
+<!-- FOOTER -->
+<footer>
+  <div><div class="foot-logo"><img src="/images/logo.png" alt="SAM's" style="height:56px;width:auto;"></div><div class="foot-tag">Café · Kitchen · People · Abidjan</div></div>
+  <p>© 2025 SAM's Abidjan · Rue Pierre et Marie Curie, Zone 4C Marcory, Abidjan, Côte d'Ivoire<br>Founded 2020 by Sam · @samsabidjan</p>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/samsabidjan/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/samsabidjan" target="_blank">Facebook</a>
+    <a href="https://glovoapp.com" target="_blank">Glovo</a>
+    <a href="tel:+2250544020000">05 44 02 0000</a>
+  </div>
+</footer>
+
+<script>
+  // LANG
+  function setLang(l){
+    document.body.className=l==='en'?'lang-en':'';
+    document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.lbtn[onclick="setLang(\''+l+'\')"]').classList.add('active');
+  }
+
+  // PAGE SWITCHING
+  function showPage(p){
+    document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+    document.getElementById('page-'+p).classList.add('active');
+    document.getElementById('nav-menu-btn').classList.toggle('active', p==='menu');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  // MENU TAB SCROLL
+  function scrollToSection(id,btn){
+    document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+</script>
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>
